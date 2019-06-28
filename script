@@ -1,0 +1,76 @@
+
+Import-Module ActiveDirectory
+
+
+$main_form = New-Object System.Windows.Forms.Form
+$main_form.Text ="Calculator.exe"
+$main_form.Width = 282
+$main_form.Height = 218
+$main_form.StartPosition = 'CenterScreen'
+
+$input = New-Object System.Windows.Forms.TextBox
+$input.Location = New-Object System.Drawing.Point(3, 5)
+$input.Size = New-Object System.Drawing.Size(258, 20)
+$main_form.Controls.Add($input)
+
+$addButton = New-Object System.Windows.Forms.Button
+$addButton.Location = New-Object System.Drawing.Size(3, 29)
+$addButton.Size = New-Object System.Drawing.Size(50, 50)
+$addButton.Text = "+"
+$main_form.Controls.Add($addButton)
+
+$subtractButton = New-Object System.Windows.Forms.Button
+$subtractButton.Location = New-Object System.Drawing.Size(55, 29)
+$subtractButton.Size = New-Object System.Drawing.Size(50, 50)
+$subtractButton.Text = "-"
+$main_form.Controls.Add($subtractButton)
+
+$divisionButton = New-Object System.Windows.Forms.Button
+$divisionButton.Location = New-Object System.Drawing.Size(107, 29)
+$divisionButton.Size = New-Object System.Drawing.Size(50, 50)
+$divisionButton.Text = "/"
+$main_form.Controls.Add($divisionButton)
+
+$multButton = New-Object System.Windows.Forms.Button
+$multButton.Location = New-Object System.Drawing.Size(159, 29)
+$multButton.Size = New-Object System.Drawing.Size(50, 50)
+$multButton.Text = "*"
+$main_form.Controls.Add($multButton)
+
+$enterButton = New-Object System.Windows.Forms.Button
+$enterButton.Location = New-Object System.Drawing.Size(211, 29)
+$enterButton.Size = New-Object System.Drawing.Size(50, 50)
+$enterButton.Text = "Enter"
+$main_form.Controls.Add($enterButton)
+$enterButton.Add_Click({
+    
+})
+
+$totalLabel = New-Object System.Windows.Forms.Label
+$totalLabel.Location = New-Object System.Drawing.Size(3, 80)
+$totalLabel.AutoSize = $true
+$totalLabel.Text = "Total: "
+$main_form.Controls.Add($totalLabel)
+
+$numLabel = New-Object System.Windows.Forms.Label
+$numLabel.Location = New-Object System.Drawing.Size(40, 80)
+$numLabel.AutoSize = $true
+$numLabel.Text = ""
+$main_form.Controls.Add($numLabel)
+
+
+
+$ExitButton = New-Object System.Windows.Forms.Button
+$ExitButton.Location = New-Object System.Drawing.Size(3,160)
+$ExitButton.Size = New-Object System.Drawing.Size(50,10)
+$ExitButton.Text = "Exit"
+$main_form.Controls.Add($ExitButton)
+$ExitButton.Add_Click({
+
+$main_form.close()
+return
+exit
+
+})
+
+$main_form.ShowDialog() | Out-Null
