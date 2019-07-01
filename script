@@ -8,6 +8,9 @@ $main_form.Width = 282
 $main_form.Height = 355
 $main_form.StartPosition = 'CenterScreen'
 
+$totOne = [int]"0"
+$totTwo = [int]"0"
+
 $oneButton = New-Object System.Windows.Forms.Button
 $oneButton.Location = New-Object System.Drawing.Size(3, 237)
 $oneButton.Size = New-Object System.Drawing.Size(50, 50)
@@ -122,13 +125,34 @@ $multButton.Size = New-Object System.Drawing.Size(50, 50)
 $multButton.Text = "*"
 $main_form.Controls.Add($multButton)
 
-$enterButton = New-Object System.Windows.Forms.Button
-$enterButton.Location = New-Object System.Drawing.Size(211, 29)
-$enterButton.Size = New-Object System.Drawing.Size(50, 50)
-$enterButton.Text = "Enter"
-$main_form.Controls.Add($enterButton)
-$enterButton.Add_Click({
-    Set-Variable -Name totOne -Value numLabel
+$clearButton = New-Object System.Windows.Forms.Button
+$clearButton.Location = New-Object System.Drawing.Size(211, 29)
+$clearButton.Size = New-Object System.Drawing.Size(50, 50)
+$clearButton.Text = "Clear"
+$main_form.Controls.Add($clearButton)
+$clearButton.Add_Click({
+    $numLabel.Text = ""
+})
+
+$enterOne = New-Object System.Windows.Forms.Button
+$enterOne.Location = New-Object System.Drawing.Size(160, 133)
+$enterOne.Size = New-Object System.Drawing.Size(50, 50)
+$enterOne.Text = "Enter 1"
+$main_form.Controls.Add($enterOne)
+$clearButton.Add_Click({
+
+    $oneLabel.Text = $numLabel.Text
+    $totOne = [int]$numLabel.Text
+    $numLabel.Text = ""
+})
+
+$enterTwo = New-Object System.Windows.Forms.Button
+$enterTwo.Location = New-Object System.Drawing.Size(160, 185)
+$enterTwo.Size = New-Object System.Drawing.Size(50, 50)
+$enterTwo.Text = "Enter 2"
+$main_form.Controls.Add($enterTwo)
+$clearButton.Add_Click({
+    $totTwo = [int]$numLabel.Text
     $numLabel.Text = ""
 })
 
@@ -139,7 +163,14 @@ $numLabel.AutoSize = $true
 $numLabel.Text = ""
 $main_form.Controls.Add($numLabel)
 
-Set-Variable -Name totOne -Value numLabel
+$oneLabel = New-Object System.Windows.Forms.Label
+$oneLabel.Location = New-Object System.Drawing.Size(3, 25)
+$oneLabel.AutoSize = $true
+$oneLabel.Text = ""
+$main_form.Controls.Add($oneLabel)
+
+
+
 
 $ExitButton = New-Object System.Windows.Forms.Button
 $ExitButton.Location = New-Object System.Drawing.Size(3,289)
